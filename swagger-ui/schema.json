@@ -1,0 +1,542 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Recogidas y Despachos"
+  },
+  "host" : "dj5pipyyfj.execute-api.us-east-1.amazonaws.com",
+  "basePath" : "/prod",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/collections" : {
+      "get" : {
+        "summary" : "Get all collections",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfCollection"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a new collection",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "CollectionCreateInput",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CollectionCreateInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Collection"
+            }
+          }
+        }
+      }
+    },
+    "/collections/{collectionId}" : {
+      "get" : {
+        "summary" : "Get a specific collection by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "collectionId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Collection"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete a specific collection by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "collectionId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Collection"
+            }
+          }
+        }
+      }
+    },
+    "/lots" : {
+      "get" : {
+        "summary" : "Get all lots",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfLot"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a new lot",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "LotCreateInput",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/LotCreateInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Lot"
+            }
+          }
+        }
+      }
+    },
+    "/lots/{lotId}" : {
+      "get" : {
+        "summary" : "Get a specific lot by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "lotId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Lot"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete a specific lot by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "lotId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Lot"
+            }
+          }
+        }
+      }
+    },
+    "/shipments" : {
+      "get" : {
+        "summary" : "Get all shipments",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfShipment"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a new shipment",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "ShipmentCreateInput",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ShipmentCreateInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Shipment"
+            }
+          }
+        }
+      }
+    },
+    "/shipments/{shipmentId}" : {
+      "get" : {
+        "summary" : "Get a specific shipment by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "shipmentId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Shipment"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete a specific shipment by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "shipmentId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/Shipment"
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "summary" : "Get all users",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/ArrayOfUser"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create a new user",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "UserCreateInput",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/UserCreateInput"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}" : {
+      "get" : {
+        "summary" : "Get a specific user by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Update a specific user by ID",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "MODEL7cb6b8",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/MODEL7cb6b8"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete a specific user by ID",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful response",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "image" : {
+          "type" : "string"
+        },
+        "roleId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ArrayOfLot" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Lot"
+      }
+    },
+    "ShipmentCreateInput" : {
+      "type" : "object",
+      "required" : [ "bunchWeight", "deliveredWeight", "shipmentDate", "shippedBunches", "userId" ],
+      "properties" : {
+        "shippedBunches" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "shipmentDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "bunchWeight" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "deliveredWeight" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "userId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Shipment" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "shippedBunches" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "shipmentDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "bunchWeight" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "deliveredWeight" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "userId" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "ArrayOfUser" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/User"
+      }
+    },
+    "CollectionCreateInput" : {
+      "type" : "object",
+      "required" : [ "bunches", "collectionDate", "lotId", "userId" ],
+      "properties" : {
+        "bunches" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "collectionDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "lotId" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UserCreateInput" : {
+      "type" : "object",
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "image" : {
+          "type" : "string"
+        },
+        "roleId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Lot" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "LotCreateInput" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ArrayOfCollection" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Collection"
+      }
+    },
+    "ArrayOfShipment" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/Shipment"
+      }
+    },
+    "Collection" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "bunches" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "collectionDate" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "lotId" : {
+          "type" : "string"
+        },
+        "userId" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "MODEL7cb6b8" : {
+      "type" : "object",
+      "properties" : {
+        "column" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

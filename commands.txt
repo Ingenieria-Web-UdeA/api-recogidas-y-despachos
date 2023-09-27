@@ -1,0 +1,9 @@
+
+# main repo packages
+yarn add aws-cdk-lib aws-sdk constructs source-map-support
+yarn add -D @types/node aws-cdk copyfiles rimraf ts-node typescript
+
+
+# back deploy
+primero, solo una vez: cdk synth
+cada vez que se quiera re-desplegar: yarn deploy

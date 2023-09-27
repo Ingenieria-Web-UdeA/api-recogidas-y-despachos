@@ -1,0 +1,503 @@
+openapi: 3.0.0
+info:
+  title: Recogidas y Despachos
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      summary: Get all users
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Create a new user
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreateInput'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{userId}:
+    get:
+      summary: Get a specific user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      summary: Update a specific user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                column:
+                  type: string
+                data:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      summary: Delete a specific user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /shipments:
+    get:
+      summary: Get all shipments
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shipment'
+    post:
+      summary: Create a new shipment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentCreateInput'
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /shipments/{shipmentId}:
+    get:
+      summary: Get a specific shipment by ID
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    delete:
+      summary: Delete a specific shipment by ID
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'DELETE'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+  /collections:
+    get:
+      summary: Get all collections
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Collection'
+    post:
+      summary: Create a new collection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionCreateInput'
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+  /collections/{collectionId}:
+    get:
+      summary: Get a specific collection by ID
+      parameters:
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+    delete:
+      summary: Delete a specific collection by ID
+      parameters:
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'DELETE'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+  /lots:
+    get:
+      summary: Get all lots
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Lot'
+    post:
+      summary: Create a new lot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LotCreateInput'
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lot'
+  /lots/{lotId}:
+    get:
+      summary: Get a specific lot by ID
+      parameters:
+        - name: lotId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'GET'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lot'
+    delete:
+      summary: Delete a specific lot by ID
+      parameters:
+        - name: lotId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'DELETE'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lot'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        image:
+          type: string
+        roleId:
+          type: string
+    UserCreateInput:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        image:
+          type: string
+        roleId:
+          type: string
+    Profile:
+      type: object
+      properties:
+        id:
+          type: string
+        document:
+          type: string
+        phoneNumber:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Role:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Lot:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    LotCreateInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    Collection:
+      type: object
+      properties:
+        id:
+          type: string
+        bunches:
+          type: integer
+        collectionDate:
+          type: string
+          format: date-time
+        lotId:
+          type: string
+        userId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CollectionCreateInput:
+      type: object
+      properties:
+        bunches:
+          type: integer
+        collectionDate:
+          type: string
+          format: date-time
+        lotId:
+          type: string
+        userId:
+          type: string
+      required:
+        - bunches
+        - collectionDate
+        - lotId
+        - userId
+    Shipment:
+      type: object
+      properties:
+        id:
+          type: string
+        shippedBunches:
+          type: integer
+        shipmentDate:
+          type: string
+          format: date-time
+        bunchWeight:
+          type: number
+          format: float
+        deliveredWeight:
+          type: number
+          format: float
+        userId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ShipmentCreateInput:
+      type: object
+      properties:
+        shippedBunches:
+          type: integer
+        shipmentDate:
+          type: string
+          format: date-time
+        bunchWeight:
+          type: number
+          format: float
+        deliveredWeight:
+          type: number
+          format: float
+        userId:
+          type: string
+      required:
+        - shippedBunches
+        - shipmentDate
+        - bunchWeight
+        - deliveredWeight
+        - userId
