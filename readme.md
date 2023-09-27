@@ -1,33 +1,70 @@
-# Backend boilerplate
+# Recogidas y Despachos API
 
-## Deployable to AppSync
+This repository contains the backend API for the "Recogidas y Despachos" service. It's built using AWS CDK, AWS Lambda, AWS API Gateway, and Prisma with a PostgreSQL database.
 
-## Instructions:
+## Overview
 
-1. aws configure con las credenciales de la cuenta de aws donde se quiera desplegar el backend
-2. modificar en config.ts.ts el nombre de la app, nombre del cliente, el id de la cuenta y la región
-3. ejecuta el comando `yarn install` para descargar las librerias del cdk y demas dependencias 
-4. agregar schema de prisma en /api/prisma
-5. configurar el string de conexión a la BD en el archivo api/src/db.ts
-6. clonar repositorio de cosmo https://github.com/prevalentWare/prisma-cosmo.git
-7. ejecutar el comando `yarn install` de cosmo
-8. copiar esquema prisma en cosmo y ejecutar con el comando `yarn aws_cosmo`
-9. reemplaza el schema gql, src/models y auth/sessionconfig de la aplicacion backend con los archivos generados   por cosmo.
+The API provides CRUD operations for the following models:
+
+- Users
+- Shipments
+- Collections
+- Lots
+
+## Setup
+
+### Prerequisites
+
+- AWS CLI
+- AWS CDK
+- Docker
+- Node.js
+- Prisma CLI
+
+### Deployment
+
+1. Clone the repository:
+
+   ```bash
+   git clone [repository-url]
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd [repository-name]
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Deploy the stack using CDK:
+   ```bash
+   cdk deploy
+   ```
+
+## API Endpoints
+
+The API is structured as a RESTful service with the following endpoints:
+
+- `/users`: Retrieve all users or create a new user.
+- `/users/{userId}`: Retrieve, update, or delete a specific user by ID.
+- `/shipments`: Retrieve all shipments or create a new shipment.
+- `/shipments/{shipmentId}`: Retrieve or delete a specific shipment by ID.
+- `/collections`: Retrieve all collections or create a new collection.
+- `/collections/{collectionId}`: Retrieve or delete a specific collection by ID.
+- `/lots`: Retrieve all lots or create a new lot.
+- `/lots/{lotId}`: Retrieve or delete a specific lot by ID.
+
+## Documentation
+
+The API documentation is available as a Swagger/OpenAPI definition. You can access the [Swagger UI here](https://d2tb9y3eoy4nz1.cloudfront.net/) or use the API Gateway URL to access the OpenAPI definition directly.
+
+## Contributing
+
+If you'd like to contribute to this project, please fork the repository, create a feature branch, and submit a pull request.
 
 
-## Commands
-
-- main repo packages
-  `yarn add @aws-cdk/aws-appsync-alpha aws-cdk-lib aws-sdk constructs source-map-support`
-  `yarn add -D @types/node aws-cdk copyfiles rimraf ts-node typescript`
-- api repo packages
-  `yarn add @prisma/client aws-sdk`
-  `yarn add -D @apollo/server @prevalentware/prisma-cosmo @types/node esbuild fs graphql prisma ts-node typescript`
-- back deployment
-  `cdk bootstrap` (sólo hay que ejecutarlo en el despliegue inicial)
-  `yarn deploy`
-- local testing
-  `cd api`
-  `yarn start`
-- testing del contenedor de Docker
-  `docker container rm -f back && docker build -t back . && docker run -p 9000:8080 --name back -e TEST=true back`
