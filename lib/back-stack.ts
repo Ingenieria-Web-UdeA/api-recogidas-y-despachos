@@ -30,13 +30,23 @@ export class BackStack extends Stack {
     };
 
     // Define the API Gateway REST API resource
-    const api = new apiGateway.SpecRestApi(this, 'RecogidasYDespachos', {
-      apiDefinition: apiGateway.ApiDefinition.fromAsset(
-        path.join(__dirname, '../api/docs/swagger-config.yml')
-      ),
-      restApiName: 'Recogidas y Despachos',
+    const api = new apiGateway.RestApi(this, 'APIRecogidasYDespachos', {
+      deployOptions: {
+        stageName: 'dev',
+      },
+      restApiName: 'API Recogidas y Despachos',
       description: 'Api Gateway para el servicio de recogidas y despachos',
     });
+    // const api = new apiGateway.SpecRestApi(this, 'APIRecogidasYDespachos', {
+    //   deployOptions: {
+    //     stageName: 'dev',
+    //   },
+    //   apiDefinition: apiGateway.ApiDefinition.fromAsset(
+    //     path.join(__dirname, '../api/docs/swagger-config.yml')
+    //   ),
+    //   restApiName: 'API Recogidas y Despachos',
+    //   description: 'Api Gateway para el servicio de recogidas y despachos',
+    // });
 
     api.root.addCorsPreflight(corsOptions);
 
@@ -53,12 +63,16 @@ export class BackStack extends Stack {
   buildLambda() {
     // Lambda resolver
     const dockerfile = path.join(__dirname, '../api');
-    const dockerLambda = new lambda.DockerImageFunction(this, `RecogidasYDespachos_DockerLambda`, {
-      functionName: `RecogidasYDespachos_DockerLambda`,
-      code: lambda.DockerImageCode.fromImageAsset(dockerfile),
-      memorySize: 1024,
-      timeout: Duration.seconds(60),
-    });
+    const dockerLambda = new lambda.DockerImageFunction(
+      this,
+      `APIRecogidasYDespachos_DockerLambda`,
+      {
+        functionName: `APIRecogidasYDespachos_DockerLambda`,
+        code: lambda.DockerImageCode.fromImageAsset(dockerfile),
+        memorySize: 1024,
+        timeout: Duration.seconds(60),
+      }
+    );
 
     return dockerLambda;
   }

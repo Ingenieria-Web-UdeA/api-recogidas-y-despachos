@@ -1,9 +1,12 @@
 import { Context, APIGatewayProxyResult, APIGatewayEvent } from 'aws-lambda';
-import { usersHandler } from './src/users';
 import { PrismaClientValidationError } from '@prisma/client/runtime/library';
-import { collectionsHandler } from './src/collections';
-import { lotsHandler } from './src/lots';
-import { shipmentsHandler } from './src/shipments';
+import {
+  usersHandler,
+  shipmentsHandler,
+  collectionsHandler,
+  lotsHandler,
+  rolesHandler,
+} from './src';
 
 export const handler = async (
   event: APIGatewayEvent,
@@ -46,6 +49,14 @@ export const handler = async (
             'Access-Control-Allow-Origin': '*', // Required for CORS support to work
           },
           ...shipmentResponse,
+        };
+      case path.startsWith('/roles'):
+        const rolesResponse = await rolesHandler(event);
+        return {
+          headers: {
+            'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+          },
+          ...rolesResponse,
         };
     }
   } catch (e: any) {

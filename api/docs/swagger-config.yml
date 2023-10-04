@@ -14,6 +14,22 @@ paths:
       responses:
         '200':
           description: Successful response
+          headers: # Add these headers
+            Access-Control-Allow-Origin:
+              description: CORS header
+              schema:
+                type: string
+                default: '*'
+            Access-Control-Allow-Methods:
+              description: CORS header
+              schema:
+                type: string
+                default: 'GET, POST, OPTIONS'
+            Access-Control-Allow-Headers:
+              description: CORS header
+              schema:
+                type: string
+                default: 'Content-Type, Authorization'
           content:
             application/json:
               schema:
@@ -116,7 +132,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -158,8 +174,38 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shipment'
+    put:
+      summary: Update a specific shipment by ID
+      parameters:
+        - name: shipmentId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                column:
+                  type: string
+                data:
+                  type: string
       responses:
         '200':
           description: Successful response
@@ -178,7 +224,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'DELETE'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -193,7 +239,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -235,8 +281,38 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+    put:
+      summary: Update a specific collection by ID
+      parameters:
+        - name: collectionId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                column:
+                  type: string
+                data:
+                  type: string
       responses:
         '200':
           description: Successful response
@@ -255,7 +331,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'DELETE'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -270,7 +346,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -312,8 +388,38 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'GET'
+        httpMethod: 'POST'
         type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lot'
+    put:
+      summary: Update a specific lot by ID
+      parameters:
+        - name: lotId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                column:
+                  type: string
+                data:
+                  type: string
       responses:
         '200':
           description: Successful response
@@ -332,7 +438,7 @@ paths:
       x-amazon-apigateway-integration:
         uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
         passthroughBehavior: 'when_no_match'
-        httpMethod: 'DELETE'
+        httpMethod: 'POST'
         type: 'aws_proxy'
       responses:
         '200':
@@ -341,6 +447,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Lot'
+  /roles:
+    get:
+      summary: Get all roles
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Role'
+  /roles/{roleId}:
+    get:
+      summary: Get a specific role by ID
+      parameters:
+        - name: roleId
+          in: path
+          required: true
+          schema:
+            type: string
+      x-amazon-apigateway-integration:
+        uri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:818037592016:function:RecogidasYDespachos_DockerLambda/invocations
+        passthroughBehavior: 'when_no_match'
+        httpMethod: 'POST'
+        type: 'aws_proxy'
 
 components:
   schemas:
